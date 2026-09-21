@@ -1,0 +1,668 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Para vos, mi amor 🌼</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(
+        135deg,
+        #fff8c9,
+        #ffe59a,
+        #fff3bd
+      );
+      color: #684b16;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .card {
+      width: min(92%, 430px);
+      padding: 34px 25px;
+      text-align: center;
+
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.82);
+
+      box-shadow:
+        0 15px 45px rgba(143, 101, 15, 0.20);
+
+      backdrop-filter: blur(8px);
+
+      animation: appear 1.5s ease;
+
+      z-index: 2;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+
+      font-size: 2rem;
+      color: #c58a00;
+    }
+
+    .subtitle {
+      margin: 0 0 22px;
+
+      font-size: 1rem;
+      color: #8b682b;
+    }
+
+    /* RAMO DE FLORES */
+
+    .bouquet {
+      position: relative;
+
+      height: 185px;
+      margin: 4px auto 18px;
+
+      animation: sway 4s ease-in-out infinite;
+    }
+
+    .flower {
+      position: absolute;
+
+      width: 70px;
+      height: 70px;
+
+      left: 50%;
+      top: 18px;
+
+      transform: translateX(-50%);
+    }
+
+    .flower:nth-child(1) {
+      margin-left: -88px;
+      margin-top: 35px;
+
+      transform:
+        translateX(-50%)
+        rotate(-15deg);
+    }
+
+    .flower:nth-child(2) {
+      margin-left: 0;
+      margin-top: -4px;
+    }
+
+    .flower:nth-child(3) {
+      margin-left: 88px;
+      margin-top: 35px;
+
+      transform:
+        translateX(-50%)
+        rotate(15deg);
+    }
+
+    .petal {
+      position: absolute;
+
+      width: 30px;
+      height: 42px;
+
+      left: 20px;
+      top: 14px;
+
+      border-radius: 50% 50% 45% 45%;
+
+      background: #ffd52e;
+
+      transform-origin: 15px 21px;
+
+      box-shadow:
+        0 2px 5px rgba(182, 128, 0, 0.12);
+    }
+
+    .petal:nth-child(1) {
+      transform: rotate(0deg) translateY(-20px);
+    }
+
+    .petal:nth-child(2) {
+      transform: rotate(45deg) translateY(-20px);
+    }
+
+    .petal:nth-child(3) {
+      transform: rotate(90deg) translateY(-20px);
+    }
+
+    .petal:nth-child(4) {
+      transform: rotate(135deg) translateY(-20px);
+    }
+
+    .petal:nth-child(5) {
+      transform: rotate(180deg) translateY(-20px);
+    }
+
+    .petal:nth-child(6) {
+      transform: rotate(225deg) translateY(-20px);
+    }
+
+    .petal:nth-child(7) {
+      transform: rotate(270deg) translateY(-20px);
+    }
+
+    .petal:nth-child(8) {
+      transform: rotate(315deg) translateY(-20px);
+    }
+
+    .center {
+      position: absolute;
+
+      width: 28px;
+      height: 28px;
+
+      left: 21px;
+      top: 21px;
+
+      border-radius: 50%;
+
+      background: #9b6200;
+
+      border: 5px dotted #e9a900;
+    }
+
+    .stem {
+      position: absolute;
+
+      width: 7px;
+      height: 115px;
+
+      background: #5f9d46;
+
+      left: 50%;
+      top: 74px;
+
+      border-radius: 10px;
+
+      transform:
+        translateX(-50%)
+        rotate(5deg);
+
+      z-index: -1;
+    }
+
+    .leaf {
+      position: absolute;
+
+      width: 42px;
+      height: 20px;
+
+      background: #75b957;
+
+      border-radius: 100% 0 100% 0;
+
+      top: 120px;
+      left: calc(50% + 5px);
+
+      transform: rotate(25deg);
+    }
+
+    /* MENSAJES */
+
+    .message {
+      font-size: 1.12rem;
+
+      line-height: 1.75;
+
+      margin: 15px 0;
+    }
+
+    .highlight {
+      color: #d39700;
+
+      font-weight: 700;
+    }
+
+    .signature {
+      margin-top: 24px;
+
+      font-size: 1rem;
+
+      font-style: italic;
+
+      color: #98702b;
+    }
+
+    /* BOTONES */
+
+    .button {
+      margin-top: 18px;
+
+      padding: 12px 22px;
+
+      border: 0;
+      border-radius: 999px;
+
+      background: #f5c21e;
+
+      color: #5d4107;
+
+      font-size: 1rem;
+
+      font-weight: 700;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 5px 15px rgba(190, 133, 0, 0.22);
+
+      transition:
+        transform 0.2s,
+        background 0.2s;
+    }
+
+    .button:hover {
+      transform: scale(1.05);
+
+      background: #ffd84b;
+    }
+
+    /* REPRODUCTOR DE MÚSICA */
+
+    .music-player {
+      margin-top: 20px;
+      padding: 15px;
+
+      border-radius: 20px;
+
+      background: rgba(255, 237, 159, 0.45);
+    }
+
+    .music-player p {
+      margin: 0;
+
+      font-size: 0.95rem;
+
+      color: #8b682b;
+    }
+
+    .music-player .button {
+      margin-top: 12px;
+    }
+
+    /* MENSAJE SECRETO */
+
+    .hidden-message {
+      display: none;
+
+      margin-top: 18px;
+
+      font-weight: 600;
+
+      line-height: 1.7;
+
+      color: #b17800;
+
+      animation: appear 0.8s ease;
+    }
+
+    /* FLORES FLOTANTES */
+
+    .floating {
+      position: absolute;
+
+      bottom: -40px;
+
+      font-size: 25px;
+
+      opacity: 0.7;
+
+      animation: float 10s linear infinite;
+    }
+
+    .floating:nth-child(1) {
+      left: 8%;
+      animation-delay: 0s;
+    }
+
+    .floating:nth-child(2) {
+      left: 28%;
+
+      animation-delay: 3s;
+
+      font-size: 18px;
+    }
+
+    .floating:nth-child(3) {
+      left: 53%;
+
+      animation-delay: 5s;
+    }
+
+    .floating:nth-child(4) {
+      left: 78%;
+
+      animation-delay: 1s;
+
+      font-size: 20px;
+    }
+
+    .floating:nth-child(5) {
+      left: 92%;
+
+      animation-delay: 7s;
+    }
+
+    /* ANIMACIONES */
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes sway {
+      0%, 100% {
+        transform: rotate(-2deg);
+      }
+
+      50% {
+        transform: rotate(2deg);
+      }
+    }
+
+    @keyframes float {
+      from {
+        transform:
+          translateY(0)
+          rotate(0deg);
+
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 0.7;
+      }
+
+      85% {
+        opacity: 0.7;
+      }
+
+      to {
+        transform:
+          translateY(-110vh)
+          rotate(360deg);
+
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- FLORES FLOTANTES -->
+
+  <div class="floating">🌼</div>
+  <div class="floating">✨</div>
+  <div class="floating">🌼</div>
+  <div class="floating">💛</div>
+  <div class="floating">🌼</div>
+
+
+  <!-- TARJETA PRINCIPAL -->
+
+  <main class="card">
+
+    <h1>Para vos, mi amor 🌼</h1>
+
+    <p class="subtitle">
+      Hay algo que quiero decirte...
+    </p>
+
+
+    <!-- RAMO ANIMADO -->
+
+    <div
+      class="bouquet"
+      aria-label="Ramo de flores amarillas"
+    >
+
+      <div class="stem"></div>
+
+      <div class="leaf"></div>
+
+
+      <!-- FLOR 1 -->
+
+      <div class="flower">
+
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+
+        <div class="center"></div>
+
+      </div>
+
+
+      <!-- FLOR 2 -->
+
+      <div class="flower">
+
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+
+        <div class="center"></div>
+
+      </div>
+
+
+      <!-- FLOR 3 -->
+
+      <div class="flower">
+
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+
+        <div class="center"></div>
+
+      </div>
+
+    </div>
+
+
+    <!-- MENSAJE PRINCIPAL -->
+
+    <p class="message">
+
+      Si pudiera regalarte algo que represente
+      lo que siento por vos, elegiría
+      <span class="highlight">
+        flores amarillas
+      </span>:
+
+      porque tienen la luz de tus sonrisas,
+      la calidez de tus abrazos
+      y la alegría que traés a mi vida.
+
+    </p>
+
+
+    <p class="message">
+
+      <strong>
+        Gracias por ser mi lugar bonito en este mundo.
+      </strong>
+
+    </p>
+
+
+    <!-- REPRODUCTOR DE MÚSICA -->
+
+    <div class="music-player">
+
+      <p>
+        🎵 Una canción para vos 💛
+      </p>
+
+      <audio id="romanticMusic" loop>
+
+        <source
+          src="musica.mp3"
+          type="audio/mpeg"
+        >
+
+        Tu navegador no admite audio.
+
+      </audio>
+
+
+      <button
+        class="button"
+        id="musicButton"
+        onclick="toggleMusic()"
+      >
+
+        🎶 Reproducir música
+
+      </button>
+
+    </div>
+
+
+    <!-- BOTÓN DE LA SORPRESA -->
+
+    <button
+      class="button"
+      onclick="showMessage()"
+    >
+
+      Hay algo más... 💌
+
+    </button>
+
+
+    <!-- MENSAJE QUE SE REVELA -->
+
+    <p
+      id="extra"
+      class="hidden-message"
+    >
+
+      🌼 Este ramo es para vos, mi amor. 💛
+
+      <br><br>
+
+      No es solo un ramo,
+      es un pequeño pedacito
+      de todo el amor que siento por vos.
+
+      <br><br>
+
+      Ahora date la vuelta...
+      porque tengo una sorpresa para vos. ❤️
+
+    </p>
+
+
+    <!-- FIRMA -->
+
+    <p class="signature">
+
+      Con todo mi amor, Agus.
+
+    </p>
+
+  </main>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    // MOSTRAR EL MENSAJE SECRETO
+
+    function showMessage() {
+
+      const message =
+        document.getElementById("extra");
+
+      message.style.display = "block";
+
+    }
+
+
+    // REPRODUCIR Y PAUSAR LA MÚSICA
+
+    function toggleMusic() {
+
+      const music =
+        document.getElementById("romanticMusic");
+
+      const button =
+        document.getElementById("musicButton");
+
+
+      if (music.paused) {
+
+        music.play()
+          .then(() => {
+
+            button.textContent =
+              "⏸️ Pausar música";
+
+          })
+          .catch(() => {
+
+            alert(
+              "No se pudo reproducir la música. Revisá que el archivo musica.mp3 esté en la misma carpeta."
+            );
+
+          });
+
+      } else {
+
+        music.pause();
+
+        button.textContent =
+          "🎶 Reproducir música";
+
+      }
+
+    }
+
+  </script>
+
+</body>
+</html>
